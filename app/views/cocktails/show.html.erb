@@ -1,28 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-<h1><%= @cocktail.name %></h1>
-</div>
-</div>
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <%= link_to "Show Cocktails", cocktails_path, class: "btn btn-primary"  %>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1><%= @cocktail.name %></h1>
+    </div>
+<!--       <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="cocktail-image">
+        <%= image_tag 'logo.jpg' %>
+      </div>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <ul>
+        <% @cocktail.doses.each do |dose|%>
+        <li>
+          <%= dose.description %>
+          <strong><%= dose.ingredient.name %></strong>
+          <%= link_to '(X)', dose, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <%= render "./doses/form" %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= render "./doses/form" %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <ul>
-  <% @cocktail.doses.each do |dose|%>
-  <li>
-    <%= dose.description %>
-  </li>
-  <% end %>
-</ul>
-  </div>
-</div>
-</div>
