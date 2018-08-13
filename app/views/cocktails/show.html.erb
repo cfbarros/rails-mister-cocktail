@@ -1,22 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+      <%=   cl_image_tag(@cocktail.photo, :width=>500, :crop=>"scale") %>
       <h1><%= @cocktail.name %></h1>
     </div>
-<!--       <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="cocktail-image">
-        <%= image_tag 'logo.jpg' %>
-      </div>
-    </div>
-  </div> -->
+  </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <ul>
         <% @cocktail.doses.each do |dose|%>
         <li>
           <%= dose.description %>
-          <strong><%= dose.ingredient.name %></strong>
+          <%= dose.ingredient.name %>
           <%= link_to '(X)', dose, method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
         <% end %>
@@ -28,3 +23,9 @@
       <%= render "./doses/form" %>
     </div>
   </div>
+   <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= link_to 'Delete', @cocktail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

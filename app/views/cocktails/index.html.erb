@@ -1,23 +1,26 @@
 <%= render "./components/banner" %>
 <div class="container">
- <div class="row">
-  <div class="col-sm-12">
-    <h1> All Cocktails</h1>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1> All Cocktails</h1>
+    </div>
+  </div>
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, width: 400, height: 500, crop: :fill %>');">
+          <div class="card-description">
+            <h2><%= cocktail.name %></h2>
+          </div>
+          <%= link_to "", cocktail_path(cocktail), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-<div class="row">
-  <% @cocktails.each do |cocktail| %>
-  <div class="col-xs-12 col-sm-4">
-   <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'logo.jpg' %>);">
-  <div class="card-description">
-    <h2><%= cocktail.name %></h2>
-  </div>
-  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-  <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
-</div>
- </div>
- <% end %>
-</div>
+
+
+
 
 
 
